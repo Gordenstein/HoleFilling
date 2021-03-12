@@ -10,18 +10,14 @@ import Foundation
 class HoleFiller {
   var originalGraySlaleMatrix: [[Float]]
   var maskGraySlaleMatrix: [[Float]]
-  var zeta: Float
-  var epsilon: Float
   var connectivity: PixelConnectivity
   var weightingFunction: WeightingFunction
     
   init() {
     originalGraySlaleMatrix = [[Float]]()
     maskGraySlaleMatrix = [[Float]]()
-    zeta = Float()
-    epsilon = Float()
     connectivity = PixelConnectivity.eightConnected
-    weightingFunction = detaultWeightingFunction(zeta: zeta, epsilon: epsilon)
+    weightingFunction = detaultWeightingFunction(zeta: 2, epsilon: 0.0001)
   }
   
   func getFilledHoleMatrix(parameters: HoleFillingParameters) throws -> [[Float]] {
@@ -37,8 +33,6 @@ class HoleFiller {
   func configureFiller(with parameters: HoleFillingParameters) {
     originalGraySlaleMatrix = parameters.originalGraySlaleMatrix
     maskGraySlaleMatrix = parameters.maskGraySlaleMatrix
-    zeta = parameters.zeta
-    epsilon = parameters.epsilon
     connectivity = parameters.connectivity
     weightingFunction = parameters.weightingFunction
   }

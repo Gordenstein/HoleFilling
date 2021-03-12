@@ -31,8 +31,6 @@ class DataManager {
     
     let holeFillingParameters = HoleFillingParameters(originalGraySlaleMatrix: originalGrayScaleMatrix,
                                                       maskGraySlaleMatrix: maskGrayScaleMatrix,
-                                                      zeta: inputParameters.zeta,
-                                                      epsilon: inputParameters.epsilon,
                                                       connectivity: inputParameters.connectivity,
                                                       weightingFunction: inputParameters.weightingFunction)
     return holeFillingParameters

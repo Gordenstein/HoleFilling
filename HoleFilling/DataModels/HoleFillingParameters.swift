@@ -10,8 +10,6 @@ import Foundation
 struct HoleFillingParameters {
   let originalGraySlaleMatrix: [[Float]]
   let maskGraySlaleMatrix: [[Float]]
-  let zeta: Float
-  let epsilon: Float
   let connectivity: PixelConnectivity
   let weightingFunction: WeightingFunction
 }

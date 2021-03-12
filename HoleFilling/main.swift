@@ -7,5 +7,7 @@
 
 import Foundation
 
-print("Hello, World!")
+print("🟢 HoleFilling launch")
 
+let appDelegate = AppDelegate()
+appDelegate.main(arguments: CommandLine.arguments)

@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		446C32CA25F8D61E00807259 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C32C925F8D61E00807259 /* main.swift */; };
+		446C32D225F8E94700807259 /* HoleFiller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C32D125F8E94600807259 /* HoleFiller.swift */; };
+		446C32D525F8E97500807259 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C32D425F8E97500807259 /* Validator.swift */; };
+		446C32D825F8EDE100807259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C32D725F8EDE100807259 /* AppDelegate.swift */; };
+		446C32DB25F8F07D00807259 /* InputParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C32DA25F8F07D00807259 /* InputParameters.swift */; };
+		446C32E025F9180A00807259 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C32DF25F9180A00807259 /* DataManager.swift */; };
+		446C32E325F9189700807259 /* HoleFillingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C32E225F9189700807259 /* HoleFillingParameters.swift */; };
+		446C330325F94CCB00807259 /* DetaultWeightingFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C330225F94CCB00807259 /* DetaultWeightingFunction.swift */; };
+		446C330825F9525000807259 /* PixelConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C330725F9525000807259 /* PixelConnectivity.swift */; };
+		446C330B25FA2E1200807259 /* HoleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446C330A25FA2E1200807259 /* HoleInformation.swift */; };
+		44797A8D25FA847600B6D86D /* PixelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44797A8C25FA847600B6D86D /* PixelData.swift */; };
+		44797A9025FA849B00B6D86D /* DataManagerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44797A8F25FA849B00B6D86D /* DataManagerHelpers.swift */; };
+		44797A9525FA859600B6D86D /* HoleFillerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44797A9425FA859600B6D86D /* HoleFillerHelpers.swift */; };
+		44797A9925FA875600B6D86D /* MatrixCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44797A9825FA875600B6D86D /* MatrixCoordinate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +38,19 @@
 /* Begin PBXFileReference section */
 		446C32C625F8D61E00807259 /* HoleFilling */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HoleFilling; sourceTree = BUILT_PRODUCTS_DIR; };
 		446C32C925F8D61E00807259 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		446C32D125F8E94600807259 /* HoleFiller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleFiller.swift; sourceTree = "<group>"; };
+		446C32D425F8E97500807259 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		446C32D725F8EDE100807259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		446C32DA25F8F07D00807259 /* InputParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputParameters.swift; sourceTree = "<group>"; };
+		446C32DF25F9180A00807259 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		446C32E225F9189700807259 /* HoleFillingParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleFillingParameters.swift; sourceTree = "<group>"; };
+		446C330225F94CCB00807259 /* DetaultWeightingFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaultWeightingFunction.swift; sourceTree = "<group>"; };
+		446C330725F9525000807259 /* PixelConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelConnectivity.swift; sourceTree = "<group>"; };
+		446C330A25FA2E1200807259 /* HoleInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleInformation.swift; sourceTree = "<group>"; };
+		44797A8C25FA847600B6D86D /* PixelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelData.swift; sourceTree = "<group>"; };
+		44797A8F25FA849B00B6D86D /* DataManagerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerHelpers.swift; sourceTree = "<group>"; };
+		44797A9425FA859600B6D86D /* HoleFillerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleFillerHelpers.swift; sourceTree = "<group>"; };
+		44797A9825FA875600B6D86D /* MatrixCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixCoordinate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +84,53 @@
 			isa = PBXGroup;
 			children = (
 				446C32C925F8D61E00807259 /* main.swift */,
+				446C32D725F8EDE100807259 /* AppDelegate.swift */,
+				446C330525F94D4E00807259 /* DataModels */,
+				446C32FC25F94B7900807259 /* Validation */,
+				446C32FE25F94B8300807259 /* DataManager */,
+				446C330025F94B8D00807259 /* HoleFillingLibrary */,
 			);
 			path = HoleFilling;
+			sourceTree = "<group>";
+		};
+		446C32FC25F94B7900807259 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				446C32D425F8E97500807259 /* Validator.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		446C32FE25F94B8300807259 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				446C32DF25F9180A00807259 /* DataManager.swift */,
+				44797A8F25FA849B00B6D86D /* DataManagerHelpers.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		446C330025F94B8D00807259 /* HoleFillingLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				446C32D125F8E94600807259 /* HoleFiller.swift */,
+				44797A9425FA859600B6D86D /* HoleFillerHelpers.swift */,
+				446C330225F94CCB00807259 /* DetaultWeightingFunction.swift */,
+			);
+			path = HoleFillingLibrary;
+			sourceTree = "<group>";
+		};
+		446C330525F94D4E00807259 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				446C32DA25F8F07D00807259 /* InputParameters.swift */,
+				446C32E225F9189700807259 /* HoleFillingParameters.swift */,
+				446C330725F9525000807259 /* PixelConnectivity.swift */,
+				446C330A25FA2E1200807259 /* HoleInformation.swift */,
+				44797A9825FA875600B6D86D /* MatrixCoordinate.swift */,
+				44797A8C25FA847600B6D86D /* PixelData.swift */,
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +190,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446C330825F9525000807259 /* PixelConnectivity.swift in Sources */,
+				446C330325F94CCB00807259 /* DetaultWeightingFunction.swift in Sources */,
+				446C330B25FA2E1200807259 /* HoleInformation.swift in Sources */,
+				446C32D825F8EDE100807259 /* AppDelegate.swift in Sources */,
+				446C32E025F9180A00807259 /* DataManager.swift in Sources */,
+				44797A9525FA859600B6D86D /* HoleFillerHelpers.swift in Sources */,
+				446C32E325F9189700807259 /* HoleFillingParameters.swift in Sources */,
 				446C32CA25F8D61E00807259 /* main.swift in Sources */,
+				44797A9925FA875600B6D86D /* MatrixCoordinate.swift in Sources */,
+				446C32DB25F8F07D00807259 /* InputParameters.swift in Sources */,
+				44797A8D25FA847600B6D86D /* PixelData.swift in Sources */,
+				446C32D525F8E97500807259 /* Validator.swift in Sources */,
+				446C32D225F8E94700807259 /* HoleFiller.swift in Sources */,
+				44797A9025FA849B00B6D86D /* DataManagerHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,9 +14,7 @@ class HoleFiller {
   var epsilon: Float
   var connectivity: PixelConnectivity
   var weightingFunction: WeightingFunction
-  
-  var dataManager = DataManager()
-  
+    
   init() {
     originalGraySlaleMatrix = [[Float]]()
     maskGraySlaleMatrix = [[Float]]()
@@ -26,13 +24,10 @@ class HoleFiller {
     weightingFunction = detaultWeightingFunction(zeta: zeta, epsilon: epsilon)
   }
   
-  func getFilledHoleMatrix(parameters: HoleFillingParameters) -> [[Float]]? {
+  func getFilledHoleMatrix(parameters: HoleFillingParameters) throws -> [[Float]] {
     configureFiller(with: parameters)
     
-    guard let holeInformation = applyMaskOnImageAndGetHoleInformation() else {
-      print("Wrong mask resulution")
-      return nil
-    }
+    let holeInformation = try applyMaskOnImageAndGetHoleInformation()
     
     fillHole(holeInformation: holeInformation)
     
@@ -48,12 +43,13 @@ class HoleFiller {
     weightingFunction = parameters.weightingFunction
   }
   
-  func applyMaskOnImageAndGetHoleInformation() -> HoleInformation? {
+  func applyMaskOnImageAndGetHoleInformation() throws -> HoleInformation {
     let rows = originalGraySlaleMatrix.count
     let columns = originalGraySlaleMatrix[0].count
     
-    guard rows == maskGraySlaleMatrix.count, columns == maskGraySlaleMatrix[0].count else {
-      return nil
+    guard rows == maskGraySlaleMatrix.count,
+          columns == maskGraySlaleMatrix[0].count else {
+      throw ProjectError.wrongParametersFormat
     }
     
     var boundary = Set<MatrixCoordinate>()

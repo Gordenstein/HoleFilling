@@ -20,33 +20,36 @@ class AppDelegate {
   }
   
   func main(arguments: [String]) {
-    let optionalInputParameters = validator.validateInputArguments(arguments: arguments)
-    
-    guard let inputParameters = optionalInputParameters else {
-      print("❌ Input parameters are not valid. Operation aborted")
-      return
+    do {
+      let inputParameters = try validator.validateInputArguments(arguments: arguments)
+      
+      validator.printValidInputParameters(parameters: inputParameters)
+      
+      let holeFillingParameters = try dataManager.getHoleFillingParameters(inputParameters: inputParameters)
+      
+      let filledHoleMatrix = try holeFiller.getFilledHoleMatrix(parameters: holeFillingParameters)
+      
+      try dataManager.convertToImageAndSave(matrix: filledHoleMatrix, path: inputParameters.resultImagePath)
+      
+      print("🏁 Operation finished successfully")
+      
+    } catch (let error) {
+      defer {
+        if let projectError = error as? ProjectError,
+           projectError == .missedParameters ||
+            projectError == .excessParameters ||
+            projectError == .wrongParametersFormat {
+          validator.printInstruction()
+        }
+      }
+      
+      print("Error occurred:")
+      if let projectError = error as? ProjectError {
+        print(projectError.errorDescription)
+      } else {
+        print(error.localizedDescription)
+      }
+      print("❌ Operation aborted")
     }
-    
-    print("""
-    Your parameters:
-          🔘 imagePath: \(inputParameters.imagePath)
-          🔘 maskPath: \(inputParameters.maskPath)
-          🔘 zeta: \(inputParameters.zeta)
-          🔘 epsilon: \(inputParameters.epsilon)
-          🔘 connectivity: \(inputParameters.connectivity)
-          🔘 resultImagePath: \(inputParameters.resultImagePath)
-    """)
-    
-    guard let holeFillingParameters = dataManager.getHoleFillingParameters(inputParameters: inputParameters) else {
-      print("❌ Could not process images. Operation aborted")
-      return
-    }
-    
-    guard let filledHoleMatrix = holeFiller.getFilledHoleMatrix(parameters: holeFillingParameters) else {
-      print("❌ Wrong mask resulution. Operation aborted")
-      return
-    }
-    
-    dataManager.convertToImageAndSave(matrix: filledHoleMatrix, path: inputParameters.resultImagePath)
   }
 }

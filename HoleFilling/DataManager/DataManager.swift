@@ -9,29 +9,24 @@ import Foundation
 import AppKit
 
 class DataManager {
-  
   init() {
   }
   
-  func getHoleFillingParameters(inputParameters: InputParameters) -> HoleFillingParameters? {
+  func getHoleFillingParameters(inputParameters: InputParameters) throws -> HoleFillingParameters {
     guard let originalImage = NSImage(contentsOfFile: inputParameters.imagePath) else {
-      print("Could not find original image")
-      return nil
+      throw ProjectError.missedOriginalImage
     }
     
     guard let maskImage = NSImage(contentsOfFile: inputParameters.maskPath) else {
-      print("Could not find mask image")
-      return nil
+      throw ProjectError.missedMaskImage
     }
     
     guard let originalGrayScaleMatrix = getGrayScaleMatrix(from: originalImage) else {
-      print("Could not process gray scale matrix for original image")
-      return nil
+      throw ProjectError.couldNotProccessOriginalImage
     }
     
     guard let maskGrayScaleMatrix = getGrayScaleMatrix(from: maskImage) else {
-      print("Could not process gray scale matrix for mask image")
-      return nil
+      throw ProjectError.couldNotProccessMaskImage
     }
     
     let holeFillingParameters = HoleFillingParameters(originalGraySlaleMatrix: originalGrayScaleMatrix,
@@ -43,7 +38,7 @@ class DataManager {
     return holeFillingParameters
   }
   
-  func getGrayScaleMatrix(from image: NSImage) -> [[Float]]? {
+  private func getGrayScaleMatrix(from image: NSImage) -> [[Float]]? {
     let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
     guard let data = cgImage?.dataProvider?.data,
           var pointer = CFDataGetBytePtr(data) else {
@@ -77,15 +72,12 @@ class DataManager {
     return matrix
   }
   
-  func convertToImageAndSave(matrix: [[Float]], path: String) {
-    guard let image = getImageFromMatrix(matrix: matrix) else {
-      return
-    }
-    
-    save(image: image, filePath: path)
+  func convertToImageAndSave(matrix: [[Float]], path: String) throws {
+    let image = try getImageFromMatrix(matrix: matrix)
+    try save(image: image, filePath: path)
   }
     
-  func getImageFromMatrix(matrix: [[Float]]) -> NSImage? {
+  private func getImageFromMatrix(matrix: [[Float]]) throws -> NSImage {
     var mergedArray = [Float]()
     for row in matrix {
       mergedArray.append(contentsOf: row)
@@ -117,7 +109,7 @@ class DataManager {
                                 decode: nil,
                                 shouldInterpolate: true,
                                 intent: .defaultIntent) else {
-      return nil
+      throw ProjectError.failedToCreateImageFromMatrix
     }
     
     let size = NSSize(width: columns, height: rows)
@@ -125,15 +117,15 @@ class DataManager {
     return image
   }
   
-  func save(image: NSImage, filePath: String) {
+  private func save(image: NSImage, filePath: String) throws {
     guard let tiffRepresentation = image.tiffRepresentation else {
-      return
+      throw ProjectError.failedSaveImage
     }
     
     let fileURL = URL(fileURLWithPath: filePath)
     let fileType = NSBitmapImageRep.FileType.jpeg
     
-    try? NSBitmapImageRep(data: tiffRepresentation)?
+    try NSBitmapImageRep(data: tiffRepresentation)?
       .representation(using: fileType, properties: [:])?
       .write(to: fileURL)
   }

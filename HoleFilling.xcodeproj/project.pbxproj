@@ -21,6 +21,8 @@
 		44797A9025FA849B00B6D86D /* DataManagerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44797A8F25FA849B00B6D86D /* DataManagerHelpers.swift */; };
 		44797A9525FA859600B6D86D /* HoleFillerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44797A9425FA859600B6D86D /* HoleFillerHelpers.swift */; };
 		44797A9925FA875600B6D86D /* MatrixCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44797A9825FA875600B6D86D /* MatrixCoordinate.swift */; };
+		44797AA025FB873C00B6D86D /* ProjectError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44797A9F25FB873C00B6D86D /* ProjectError.swift */; };
+		44797AA325FB93A200B6D86D /* ValidatorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44797AA225FB93A200B6D86D /* ValidatorHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,8 @@
 		44797A8F25FA849B00B6D86D /* DataManagerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerHelpers.swift; sourceTree = "<group>"; };
 		44797A9425FA859600B6D86D /* HoleFillerHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoleFillerHelpers.swift; sourceTree = "<group>"; };
 		44797A9825FA875600B6D86D /* MatrixCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixCoordinate.swift; sourceTree = "<group>"; };
+		44797A9F25FB873C00B6D86D /* ProjectError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectError.swift; sourceTree = "<group>"; };
+		44797AA225FB93A200B6D86D /* ValidatorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				446C32D425F8E97500807259 /* Validator.swift */,
+				44797AA225FB93A200B6D86D /* ValidatorHelpers.swift */,
 			);
 			path = Validation;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 				446C330A25FA2E1200807259 /* HoleInformation.swift */,
 				44797A9825FA875600B6D86D /* MatrixCoordinate.swift */,
 				44797A8C25FA847600B6D86D /* PixelData.swift */,
+				44797A9F25FB873C00B6D86D /* ProjectError.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -200,7 +206,9 @@
 				446C32CA25F8D61E00807259 /* main.swift in Sources */,
 				44797A9925FA875600B6D86D /* MatrixCoordinate.swift in Sources */,
 				446C32DB25F8F07D00807259 /* InputParameters.swift in Sources */,
+				44797AA325FB93A200B6D86D /* ValidatorHelpers.swift in Sources */,
 				44797A8D25FA847600B6D86D /* PixelData.swift in Sources */,
+				44797AA025FB873C00B6D86D /* ProjectError.swift in Sources */,
 				446C32D525F8E97500807259 /* Validator.swift in Sources */,
 				446C32D225F8E94700807259 /* HoleFiller.swift in Sources */,
 				44797A9025FA849B00B6D86D /* DataManagerHelpers.swift in Sources */,

@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8A8956FD-BB0C-402D-9A51-4D1B4482E7AE"
+            uuid = "917BC816-1355-4245-A49A-199FA1890A0B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HoleFilling/DataManager/DataManager.swift"
+            filePath = "HoleFilling/HoleFillingLibrary/HoleFillerHelpers.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "save(image:filePath:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "getSpiralTraverse(matrix:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

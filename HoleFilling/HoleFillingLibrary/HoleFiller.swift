@@ -30,14 +30,14 @@ class HoleFiller {
     return originalGraySlaleMatrix
   }
   
-  func configureFiller(with parameters: HoleFillingParameters) {
+  private func configureFiller(with parameters: HoleFillingParameters) {
     originalGraySlaleMatrix = parameters.originalGraySlaleMatrix
     maskGraySlaleMatrix = parameters.maskGraySlaleMatrix
     connectivity = parameters.connectivity
     weightingFunction = parameters.weightingFunction
   }
   
-  func applyMaskOnImageAndGetHoleInformation() throws -> HoleInformation {
+  private func applyMaskOnImageAndGetHoleInformation() throws -> HoleInformation {
     let rows = originalGraySlaleMatrix.count
     let columns = originalGraySlaleMatrix[0].count
     
@@ -48,14 +48,17 @@ class HoleFiller {
     
     var boundary = Set<MatrixCoordinate>()
     var holeBody = Set<MatrixCoordinate>()
+    var holeBodyMatrix = [[MatrixCoordinate]]()
     
     for i in 0..<rows {
+      var holeRow = [MatrixCoordinate]()
       for j in 0..<columns {
         let isHole = maskGraySlaleMatrix[i][j] > 0.0
         let currentCoordinate = MatrixCoordinate(i: i, j: j)
         if isHole {
           originalGraySlaleMatrix[i][j] = -1
           holeBody.insert(currentCoordinate)
+          holeRow.append(currentCoordinate)
           let neibors = getNeighbors(for: currentCoordinate)
           for neibor in neibors {
             if neibor.i >= 0 && neibor.i < rows
@@ -68,12 +71,17 @@ class HoleFiller {
           }
         }
       }
+      if !holeRow.isEmpty {
+        holeBodyMatrix.append(holeRow)
+      }
     }
     
-    return HoleInformation(boundary: boundary, holeBody: holeBody)
+    return HoleInformation(boundary: boundary,
+                           holeBody: holeBody,
+                           holeBodyMatrix: holeBodyMatrix)
   }
   
-  func fillHole(holeInformation: HoleInformation) {
+  private func fillHole(holeInformation: HoleInformation) {
     let boundary = holeInformation.boundary
     let holeBody = holeInformation.holeBody
     
@@ -84,6 +92,27 @@ class HoleFiller {
         let weight = weightingFunction(u, v)
         dividend += weight * originalGraySlaleMatrix[v.i][v.j]
         divisor += weight
+      }
+      let quotient = dividend / divisor
+      originalGraySlaleMatrix[u.i][u.j] = quotient
+    }
+  }
+  
+  private func fillHoleApproximate(holeInformation: HoleInformation) {
+    let holeMatrix = holeInformation.holeBodyMatrix
+    let spiralHoleBody = getSpiralTraverse(matrix: holeMatrix)
+    
+    for u in spiralHoleBody {
+      var dividend: Float = 0
+      var divisor: Float = 0
+      
+      let neibors = getEightConnectivityNeighbors(for: u)
+      for v in neibors {
+        if originalGraySlaleMatrix[v.i][v.j] != -1 {
+          let weight = weightingFunction(u, v)
+          dividend += weight * originalGraySlaleMatrix[v.i][v.j]
+          divisor += weight
+        }
       }
       let quotient = dividend / divisor
       originalGraySlaleMatrix[u.i][u.j] = quotient

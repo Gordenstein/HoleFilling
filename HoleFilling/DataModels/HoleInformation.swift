@@ -10,4 +10,5 @@ import Foundation
 struct HoleInformation {
   let boundary: Set<MatrixCoordinate>
   let holeBody: Set<MatrixCoordinate>
+  let holeBodyMatrix: [[MatrixCoordinate]]
 }

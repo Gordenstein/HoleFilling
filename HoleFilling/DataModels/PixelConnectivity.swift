@@ -11,3 +11,15 @@ enum PixelConnectivity {
   case fourConnected
   case eightConnected
 }
+
+struct PixelConnectivity2 {
+  private let pattern: [((Int,Int),(Int,Int))]
+  
+  public init(coordinates: (Int,Int)) {
+    
+  }
+  
+  public func getPattern() -> [((Int,Int),(Int,Int))] {
+    
+  }
+}

@@ -29,6 +29,8 @@ class DataManager {
       throw ProjectError.couldNotProccessMaskImage
     }
     
+    bueild
+    
     let holeFillingParameters = HoleFillingParameters(originalGraySlaleMatrix: originalGrayScaleMatrix,
                                                       maskGraySlaleMatrix: maskGrayScaleMatrix,
                                                       connectivity: inputParameters.connectivity,
